@@ -16,67 +16,71 @@ const Compare = ({ firstCityData, secondCityData }) => {
   );
 
   return (
-    <Table>
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th colSpan="2">Name</th>
-          <th colSpan="2">Temp. Day °C</th>
-          <th colSpan="2">Temp. Night °C</th>
-          <th colSpan="2">Conditions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>{filteredSecondCityData[1].dt_txt.split(" ")[0]}</td>
-          <td>{firstCityData.city.name}</td>
-          <td>{secondCityData.city.name}</td>
-          <td>{Math.floor(filteredFirstCityData[1].main.temp - 273.15)}</td>
-          <td>{Math.floor(filteredSecondCityData[1].main.temp - 273.15)}</td>
-          <td>
-            {Math.floor(filteredNightFirstCityData[1].main.temp - 273.15)}
-          </td>
-          <td>
-            {Math.floor(filteredNightSecondCityData[1].main.temp - 273.15)}
-          </td>
-          <td>{filteredFirstCityData[1].weather[0].main}</td>
-          <td>{filteredSecondCityData[1].weather[0].main}</td>
-        </tr>
-        <tr>
-          <td>{filteredSecondCityData[2].dt_txt.split(" ")[0]}</td>
-          <td>{firstCityData.city.name}</td>
-          <td>{secondCityData.city.name}</td>
-          <td>{Math.floor(filteredFirstCityData[2].main.temp - 273.15)}</td>
-          <td>{Math.floor(filteredSecondCityData[2].main.temp - 273.15)}</td>
-          <td>
-            {Math.floor(filteredNightFirstCityData[2].main.temp - 273.15)}
-          </td>
-          <td>
-            {Math.floor(filteredNightSecondCityData[2].main.temp - 273.15)}
-          </td>
-          <td>{filteredFirstCityData[2].weather[0].main}</td>
-          <td>{filteredSecondCityData[2].weather[0].main}</td>
-        </tr>
-        <tr>
-          <td>{filteredSecondCityData[3].dt_txt.split(" ")[0]}</td>
-          <td>{firstCityData.city.name}</td>
-          <td>{secondCityData.city.name}</td>
-          <td>{Math.floor(filteredFirstCityData[3].main.temp - 273.15)}</td>
-          <td>{Math.floor(filteredSecondCityData[3].main.temp - 273.15)}</td>
-          <td>
-            {Math.floor(filteredNightFirstCityData[3].main.temp - 273.15)}
-          </td>
-          <td>
-            {Math.floor(filteredNightSecondCityData[3].main.temp - 273.15)}
-          </td>
-          <td>{filteredFirstCityData[3].weather[0].main}</td>
-          <td>{filteredSecondCityData[3].weather[0].main}</td>
-        </tr>
-      </tbody>
-    </Table>
+    <TableContainer>
+      <Table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th colSpan="2">Name</th>
+            <th colSpan="2">Temp. Day °C</th>
+            <th colSpan="2">Temp. Night °C</th>
+            <th colSpan="2">Conditions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{filteredSecondCityData[1].dt_txt.split(" ")[0]}</td>
+            <td>{firstCityData.city.name}</td>
+            <td>{secondCityData.city.name}</td>
+            <td>{Math.floor(filteredFirstCityData[1].main.temp - 273.15)}</td>
+            <td>{Math.floor(filteredSecondCityData[1].main.temp - 273.15)}</td>
+            <td>
+              {Math.floor(filteredNightFirstCityData[1].main.temp - 273.15)}
+            </td>
+            <td>
+              {Math.floor(filteredNightSecondCityData[1].main.temp - 273.15)}
+            </td>
+            <td>{filteredFirstCityData[1].weather[0].main}</td>
+            <td>{filteredSecondCityData[1].weather[0].main}</td>
+          </tr>
+          <tr>
+            <td>{filteredSecondCityData[2].dt_txt.split(" ")[0]}</td>
+            <td>{firstCityData.city.name}</td>
+            <td>{secondCityData.city.name}</td>
+            <td>{Math.floor(filteredFirstCityData[2].main.temp - 273.15)}</td>
+            <td>{Math.floor(filteredSecondCityData[2].main.temp - 273.15)}</td>
+            <td>
+              {Math.floor(filteredNightFirstCityData[2].main.temp - 273.15)}
+            </td>
+            <td>
+              {Math.floor(filteredNightSecondCityData[2].main.temp - 273.15)}
+            </td>
+            <td>{filteredFirstCityData[2].weather[0].main}</td>
+            <td>{filteredSecondCityData[2].weather[0].main}</td>
+          </tr>
+          <tr>
+            <td>{filteredSecondCityData[3].dt_txt.split(" ")[0]}</td>
+            <td>{firstCityData.city.name}</td>
+            <td>{secondCityData.city.name}</td>
+            <td>{Math.floor(filteredFirstCityData[3].main.temp - 273.15)}</td>
+            <td>{Math.floor(filteredSecondCityData[3].main.temp - 273.15)}</td>
+            <td>
+              {Math.floor(filteredNightFirstCityData[3].main.temp - 273.15)}
+            </td>
+            <td>
+              {Math.floor(filteredNightSecondCityData[3].main.temp - 273.15)}
+            </td>
+            <td>{filteredFirstCityData[3].weather[0].main}</td>
+            <td>{filteredSecondCityData[3].weather[0].main}</td>
+          </tr>
+        </tbody>
+      </Table>
+    </TableContainer>
   );
 };
-
+const TableContainer = styled.div`
+  overflow-x: auto;
+`;
 const Table = styled.table`
   font-family: inherit;
   width: 100%;

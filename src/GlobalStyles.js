@@ -4,9 +4,13 @@ const GlobalStyle = createGlobalStyle`
 *{
     margin: 0;
     padding: 0;
-    overflow-y: hidden;
-
 }
+@media (max-width: 766px) {
+    body{
+        font-size:80%;
+    }
+}
+
 `;
 
 export default GlobalStyle;

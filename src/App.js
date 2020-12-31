@@ -63,7 +63,6 @@ const App = () => {
           )}
         </Content>
       </Container>
-      );
     </div>
   );
 };
@@ -71,7 +70,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   padding: 5rem 5rem;
-  height: 100vh;
+  height: 80vh;
   font-family: "Poppins", sans-serif;
   background: hsl(212, 33%, 89%);
 
@@ -101,6 +100,17 @@ const Content = styled.div`
 
 const Form = styled.form`
   margin-top: 2rem;
+
+  @media (max-width: 766px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    Input {
+      margin-bottom: 1rem;
+    }
+  }
 `;
 
 const InputBox = styled.input`
