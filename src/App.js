@@ -54,7 +54,7 @@ const App = () => {
             <Button onClick={compareHandler}>Compare</Button>
           </Form>
           {isLoading ? (
-            <h3 class="alert">Please click compare</h3>
+            ""
           ) : (
             <Compare
               firstCityData={firstCityData}
