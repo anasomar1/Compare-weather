@@ -4,8 +4,8 @@ import Compare from "./components/Compare";
 
 import GlobalStyles from "./GlobalStyles";
 const App = () => {
-  const [query, setQuery] = useState("Amman");
-  const [secondQuery, setSecondQuery] = useState("Paris");
+  const [query, setQuery] = useState("");
+  const [secondQuery, setSecondQuery] = useState("");
   const [firstCity, setFirstCity] = useState(query);
   const [secondCity, setSecondCity] = useState(secondQuery);
   const [isLoading, setIsLoading] = useState(true);
@@ -25,10 +25,13 @@ const App = () => {
     e.preventDefault();
     const firstCityData = await fetch(firstCityInfo)
       .then((res) => res.json())
-      .then((info) => info);
+      .then((info) => info)
+      .catch(() => alert("failed to find city"));
+
     const secondCityData = await fetch(secondCityInfo)
       .then((res) => res.json())
-      .then((info) => info);
+      .then((info) => info)
+      .catch(() => alert("failed to find city"));
 
     setFirstCityData(firstCityData);
     setSecondCityData(secondCityData);
@@ -39,6 +42,7 @@ const App = () => {
     setFirstCity(query);
     setSecondCity(secondQuery);
   }, [query, secondQuery]);
+
   return (
     <div>
       <GlobalStyles />
@@ -48,8 +52,16 @@ const App = () => {
             Compare the weather for the following 3 days between any two cities.
           </h3>
           <Form>
-            <InputBox onChange={firstInputHandler} value={query} />
-            <InputBox onChange={secondInputHandler} value={secondQuery} />
+            <InputBox
+              placeholder="First city..."
+              onChange={firstInputHandler}
+              value={query}
+            />
+            <InputBox
+              placeholder="Second city..."
+              onChange={secondInputHandler}
+              value={secondQuery}
+            />
 
             <Button onClick={compareHandler}>Compare</Button>
           </Form>
