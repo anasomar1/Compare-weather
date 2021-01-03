@@ -23,18 +23,16 @@ const App = () => {
 
   const compareHandler = async (e) => {
     e.preventDefault();
-    const firstCityData = await fetch(firstCityInfo)
+    await fetch(firstCityInfo)
       .then((res) => res.json())
-      .then((info) => info)
+      .then((info) => setFirstCityData(info))
       .catch(() => alert("failed to find city"));
 
-    const secondCityData = await fetch(secondCityInfo)
+    await fetch(secondCityInfo)
       .then((res) => res.json())
-      .then((info) => info)
+      .then((info) => setSecondCityData(info))
       .catch(() => alert("failed to find city"));
 
-    setFirstCityData(firstCityData);
-    setSecondCityData(secondCityData);
     setIsLoading(false);
   };
 
@@ -42,7 +40,6 @@ const App = () => {
     setFirstCity(query);
     setSecondCity(secondQuery);
   }, [query, secondQuery]);
-
   return (
     <div>
       <GlobalStyles />
@@ -56,22 +53,28 @@ const App = () => {
               placeholder="First city..."
               onChange={firstInputHandler}
               value={query}
+              required
             />
             <InputBox
               placeholder="Second city..."
               onChange={secondInputHandler}
               value={secondQuery}
+              required
             />
 
             <Button onClick={compareHandler}>Compare</Button>
           </Form>
           {isLoading ? (
-            ""
-          ) : (
+            ``
+          ) : firstCityData.cod === "200" && secondCityData.cod === "200" ? (
             <Compare
               firstCityData={firstCityData}
               secondCityData={secondCityData}
             />
+          ) : (
+            <h3 style={{ marginTop: "2rem" }}>
+              Please make sure city names are correct
+            </h3>
           )}
         </Content>
       </Container>
